@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz</title>
+	<script>
+		var counter = 0;
+
+		function countClicks() {
+			counter++;
+			document.getElementById('counter').innerHTML = "Você marcou " + counter + " opções.";
+		}
+
+		function checkAnswer() {
+			var selectedOptions = document.querySelectorAll('input[name=option]:checked');
+			var numSelected = selectedOptions.length;
+			var correctOption = document.getElementById('option-a');
+
+			if (numSelected === 0) {
+				alert('Por favor, selecione uma opção.');
+			} else if (numSelected === 1 && selectedOptions[0].id === correctOption.id) {
+				alert('Parabéns, você selecionou a opção correta!');
+			} else {
+				alert('Ops, essa não é a opção correta. Por favor, tente novamente.');
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Quiz</h1>
+	<p>O front end é utilizado por quais linguagens?</p>
+	<ul>
+		<li>
+			<label>
+				<input type="checkbox" name="option" onclick="countClicks()" id="option-a"> 
+				HTML, CSS e JavaScript
+			</label>
+		</li>
+		<li>
+			<label>
+				<input type="checkbox" name="option" onclick="countClicks()" id="option-b"> 
+				Azure, Firebird
+			</label>
+		</li>
+		<li>
+			<label>
+				<input type="checkbox" name="option" onclick="countClicks()" id="option-c"> 
+				Nenhuma das alternativas
+			</label>
+		</li>
+	</ul>
+	<div id="counter"></div>
+	<button onclick="checkAnswer()">Verificar Resposta</button>
+</body>
+</html>
